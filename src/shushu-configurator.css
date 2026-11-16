@@ -1,0 +1,108 @@
+/* SHU-SHU® · Configurador B2B — ESTILOS
+ * Todo queda dentro de .shb2b para no afectar el resto de la tienda.
+ * Estética: blanco y negro, minimalista, alineada al logo SHU-SHU®. */
+
+.shb2b {
+  --shb2b-ink: #0a0a0a;
+  --shb2b-paper: #ffffff;
+  --shb2b-muted: #6b6b6b;
+  --shb2b-line: #e3e3e3;
+  --shb2b-soft: #f6f6f6;
+  --shb2b-radius: 10px;
+  color: var(--shb2b-ink);
+  font-family: var(--body-font, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 8px 0 48px;
+  box-sizing: border-box;
+}
+.shb2b *, .shb2b *::before, .shb2b *::after { box-sizing: border-box; }
+
+/* Encabezado */
+.shb2b-hero { text-align: center; padding: 24px 0 32px; }
+.shb2b-eyebrow {
+  margin: 0 0 8px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+  font-weight: 700; font-style: italic;
+}
+.shb2b-title {
+  margin: 0; font-size: clamp(28px, 5vw, 48px); line-height: 1.05;
+  text-transform: uppercase; font-weight: 800; font-style: italic; letter-spacing: -.01em;
+}
+.shb2b-lead { margin: 12px auto 0; max-width: 520px; color: var(--shb2b-muted); }
+.shb2b-notice {
+  display: inline-block; margin: 16px 0 0; padding: 6px 12px; font-size: 13px;
+  border: 1px dashed var(--shb2b-ink); border-radius: 999px;
+}
+
+/* Progreso */
+.shb2b-progress {
+  list-style: none; margin: 0 0 24px; padding: 0 0 4px;
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin;
+}
+.shb2b-progress-item button {
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  padding: 8px 12px; border: 1px solid var(--shb2b-line); border-radius: 999px;
+  background: var(--shb2b-paper); color: var(--shb2b-ink); font: inherit; font-size: 13px; cursor: pointer;
+}
+.shb2b-progress-item button:disabled { color: #b5b5b5; cursor: not-allowed; }
+.shb2b-progress-num {
+  display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%;
+  border: 1px solid currentColor; font-size: 11px; font-weight: 700;
+}
+.shb2b-progress-item.is-done .shb2b-progress-num { background: var(--shb2b-ink); color: var(--shb2b-paper); border-color: var(--shb2b-ink); }
+.shb2b-progress-item.is-current button { border-color: var(--shb2b-ink); font-weight: 700; }
+
+/* Layout: paso + resumen */
+.shb2b-layout { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 900px) {
+  .shb2b-layout { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; }
+  .shb2b-aside { position: sticky; top: 96px; }
+}
+
+.shb2b-step-count { margin: 0; font-size: 12px; color: var(--shb2b-muted); letter-spacing: .08em; text-transform: uppercase; }
+.shb2b-step-title { margin: 4px 0 8px; font-size: 24px; font-weight: 800; text-transform: uppercase; font-style: italic; outline: none; }
+.shb2b-muted { color: var(--shb2b-muted); font-size: 14px; margin: 0 0 16px; }
+
+/* Opciones */
+.shb2b-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 16px 0 0; }
+.shb2b-options--qty { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+.shb2b-options--color { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.shb2b-option { position: relative; display: block; cursor: pointer; }
+.shb2b-option input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.shb2b-option-body {
+  display: flex; flex-direction: column; gap: 4px; height: 100%;
+  padding: 16px; border: 1px solid var(--shb2b-line); border-radius: var(--shb2b-radius);
+  background: var(--shb2b-paper); transition: border-color .15s, box-shadow .15s;
+}
+.shb2b-option:hover .shb2b-option-body { border-color: #9a9a9a; }
+.shb2b-option input:checked + .shb2b-option-body { border-color: var(--shb2b-ink); box-shadow: inset 0 0 0 1px var(--shb2b-ink); }
+.shb2b-option input:focus-visible + .shb2b-option-body { outline: 2px solid var(--shb2b-ink); outline-offset: 2px; }
+.shb2b-option-label { font-weight: 700; }
+.shb2b-option-sub { font-size: 13px; color: var(--shb2b-muted); }
+.shb2b-option--color .shb2b-option-body { align-items: center; text-align: center; }
+.shb2b-swatch { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); }
+
+/* Navegación */
+.shb2b-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 28px; }
+.shb2b-btn {
+  padding: 14px 28px; border: 1px solid var(--shb2b-ink); border-radius: 999px;
+  background: var(--shb2b-ink); color: var(--shb2b-paper); font: inherit; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em; cursor: pointer;
+}
+.shb2b-btn:disabled { opacity: .35; cursor: not-allowed; }
+.shb2b-btn--ghost { background: transparent; color: var(--shb2b-ink); }
+
+/* Resumen */
+.shb2b-aside { padding: 20px; background: var(--shb2b-soft); border-radius: var(--shb2b-radius); }
+.shb2b-aside-title { margin: 0 0 12px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+.shb2b-summary-list { margin: 0; }
+.shb2b-summary-list > div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--shb2b-line); font-size: 14px; }
+.shb2b-summary-list dt { color: var(--shb2b-muted); }
+.shb2b-summary-list dd { margin: 0; font-weight: 600; text-align: right; }
+.shb2b-step .shb2b-summary-list { margin-top: 16px; }
+.shb2b-step .shb2b-summary-list + .shb2b-muted { margin-top: 16px; }
+
+@media (max-width: 599px) {
+  .shb2b-options { grid-template-columns: 1fr 1fr; }
+  .shb2b-nav .shb2b-btn { flex: 1; }
+}

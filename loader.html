@@ -1,0 +1,27 @@
+<div id="shushu-b2b" hidden><p style="text-align:center;padding:48px 0">Cargando configurador…</p></div>
+<script>
+(function () {
+  var PATH = '/personaliza-tu-producto';
+  var VERSION = 'v0.1.0';
+  var BASE = 'https://cdn.jsdelivr.net/gh/shushubsas/configurador-b2b@' + VERSION + '/src/';
+  var root = document.getElementById('shushu-b2b');
+  if (!root) return;
+  if (location.pathname.replace(/\/+$/, '') !== PATH) {
+    var box = root.closest('[data-section-id]');
+    if (box) box.style.display = 'none';
+    return;
+  }
+  root.hidden = false;
+  function fail() { root.innerHTML = '<p style="text-align:center;padding:48px 0">El configurador no está disponible en este momento. Escribinos por WhatsApp.</p>'; }
+  var css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = BASE + 'shushu-configurator.css';
+  document.head.appendChild(css);
+  function load(src, next) {
+    var s = document.createElement('script');
+    s.src = src; s.onload = next; s.onerror = fail;
+    document.body.appendChild(s);
+  }
+  load(BASE + 'shushu-config.js', function () { load(BASE + 'shushu-configurator.js'); });
+})();
+</script>
